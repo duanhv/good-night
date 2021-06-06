@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_034345) do
+ActiveRecord::Schema.define(version: 2021_06_06_132436) do
+
+  create_table "clock_ins", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "sleep_at"
+    t.datetime "wake_up_at"
+    t.integer "sleep_time_in_second"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_clock_ins_on_user_id"
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer "sender_id", null: false
