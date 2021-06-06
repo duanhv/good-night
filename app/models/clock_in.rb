@@ -18,6 +18,6 @@ class ClockIn < ApplicationRecord
   def ensure_valid_wake_up_at
     return if wake_up_at.nil?
 
-    sleep_at.before?(wake_up_at)
+    errors.add(:wake_up_at, "must be greater than sleep_at") if sleep_at.after?(wake_up_at)
   end
 end

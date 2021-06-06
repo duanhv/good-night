@@ -1,7 +1,7 @@
 class Api::V1::FollowsController < ApplicationController
 
   def index
-    follows = Follow.where(sender_id: current_user.id).order(created_at: :desc)
+    follows = Follow.where(sender_id: current_user.id).order(id: :desc)
     render json: follows, status: :ok
   end
 
