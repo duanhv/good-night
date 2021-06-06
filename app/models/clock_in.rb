@@ -7,6 +7,8 @@ class ClockIn < ApplicationRecord
 
   before_save :update_sleep_time_in_second
 
+  scope :available, -> { where.not(wake_up_at: nil) }
+
   private
 
   def update_sleep_time_in_second
