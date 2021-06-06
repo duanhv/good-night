@@ -26,7 +26,7 @@ RSpec.describe Api::V1::FollowsController, type: :request do
     end
   end
 
-  describe "POST #create" do
+  describe "POST #create (follow other user)" do
     context "when receiver does not exsit" do
       it "raises NOT FOUND error" do
         sender = FactoryBot.create(:user)
@@ -53,8 +53,8 @@ RSpec.describe Api::V1::FollowsController, type: :request do
     end
   end
 
-  describe "DELETE #destroy" do
-    it "unfollows" do
+  describe "DELETE #destroy (unfollow)" do
+    it "deletes follow record" do
       sender = FactoryBot.create(:user)
       receiver = FactoryBot.create(:user)
       FactoryBot.create(:follow, sender: sender, receiver: receiver)
